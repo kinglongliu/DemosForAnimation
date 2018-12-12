@@ -1,4 +1,4 @@
-package cn.huanxiu.demosforanimation.animation;
+package cn.huanxiu.demosforanimation.animation.customview;
 
 import android.animation.ValueAnimator;
 import android.content.Context;
@@ -8,13 +8,12 @@ import android.graphics.Path;
 import android.graphics.PathMeasure;
 import android.util.AttributeSet;
 import android.view.View;
-
 import cn.huanxiu.demosforanimation.R;
 
 /**
  * 作者：liujinlong
  * 时间：2018/12/10
- * 功能：
+ * 功能：路径动画例子
  */
 public class PathAnimationView extends View {
 
@@ -50,7 +49,7 @@ public class PathAnimationView extends View {
 
         mDstPath=new Path();
         mCirclePath=new Path();
-        mCirclePath.addCircle(100,100,50,Path.Direction.CCW);
+        mCirclePath.addCircle(100,100,50,Path.Direction.CW);
         mPathMeasure=new PathMeasure(mCirclePath,true);
 
         ValueAnimator animator=ValueAnimator.ofFloat(0,1);
@@ -59,7 +58,7 @@ public class PathAnimationView extends View {
             @Override
             public void onAnimationUpdate(ValueAnimator valueAnimator) {
                 mCurAnimValue=(Float)valueAnimator.getAnimatedValue();
-//                invalidate();
+                invalidate();
             }
         });
         animator.setDuration(2000);
