@@ -24,4 +24,9 @@
         android:layout_width="100dp"
         android:layout_height="100dp" />
 
+    <cn.huanxiu.demosforanimation.animation.customview.PathAnimationViewThree
+        android:layout_marginTop="10dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp" />
+
 </LinearLayout>
