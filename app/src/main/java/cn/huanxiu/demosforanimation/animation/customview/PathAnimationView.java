@@ -14,6 +14,7 @@ import cn.huanxiu.demosforanimation.R;
  * 作者：liujinlong
  * 时间：2018/12/10
  * 功能：路径动画例子
+ * 技术点：getSegment
  */
 public class PathAnimationView extends View {
 

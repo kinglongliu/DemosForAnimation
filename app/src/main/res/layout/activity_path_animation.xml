@@ -15,6 +15,15 @@
         android:textColor="@color/white"
         android:textSize="16sp" />
 
+    <TextView
+        android:layout_marginLeft="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="技术点:PathMeasure--getLength(),getSegment(),getPosTan(),getMatrix()"
+        android:textColor="@color/colorPrimary"
+        android:textSize="16sp" />
+
     <cn.huanxiu.demosforanimation.animation.customview.PathAnimationView
         android:layout_width="100dp"
         android:layout_height="100dp" />
@@ -25,6 +34,11 @@
         android:layout_height="100dp" />
 
     <cn.huanxiu.demosforanimation.animation.customview.PathAnimationViewThree
+        android:layout_marginTop="10dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp" />
+
+    <cn.huanxiu.demosforanimation.animation.customview.PathAnimationViewForth
         android:layout_marginTop="10dp"
         android:layout_width="100dp"
         android:layout_height="100dp" />

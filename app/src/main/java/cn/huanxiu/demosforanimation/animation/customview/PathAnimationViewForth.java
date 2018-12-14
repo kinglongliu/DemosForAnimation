@@ -10,7 +10,6 @@ import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.PathMeasure;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.View;
 
 import cn.huanxiu.demosforanimation.R;
@@ -19,9 +18,9 @@ import cn.huanxiu.demosforanimation.R;
  * 作者：liujinlong
  * 时间：2018/12/10
  * 功能：路径动画例子
- * 技术点：getPosTan，Matrix
+ * 技术点：getMatrix
  */
-public class PathAnimationViewThree extends View {
+public class PathAnimationViewForth extends View {
 
     private Paint mPaint;
     private int mPaintColor;
@@ -33,7 +32,7 @@ public class PathAnimationViewThree extends View {
     private float[] pos = new float[2];
     private float[] tan = new float[2];
 
-    public PathAnimationViewThree(Context context, AttributeSet attrs) {
+    public PathAnimationViewForth(Context context, AttributeSet attrs) {
         super(context, attrs);
         init();
     }
@@ -46,11 +45,9 @@ public class PathAnimationViewThree extends View {
         mPathMeasure.getSegment(0, stop, mDstPath, true);
         canvas.drawPath(mDstPath, mPaint);
 
-        mPathMeasure.getPosTan(stop, pos, tan);
-        float degrees = (float) (Math.atan2(tan[1], tan[0]) * 180.0 / Math.PI);
         Matrix matrix = new Matrix();
-        matrix.postRotate(degrees, mArrawBmp.getWidth() / 2, mArrawBmp.getHeight() / 2);
-        matrix.postTranslate(pos[0] - mArrawBmp.getWidth() / 2, pos[1] - mArrawBmp.getHeight() / 2);
+        mPathMeasure.getMatrix(stop,matrix,PathMeasure.POSITION_MATRIX_FLAG|PathMeasure.TANGENT_MATRIX_FLAG);
+        matrix.preTranslate(-mArrawBmp.getWidth()/2,-mArrawBmp.getHeight()/2);
         canvas.drawBitmap(mArrawBmp, matrix, mPaint);
     }
 
