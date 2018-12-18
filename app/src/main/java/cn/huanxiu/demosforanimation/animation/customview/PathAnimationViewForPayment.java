@@ -26,6 +26,8 @@ public class PathAnimationViewForPayment extends View {
     private PathMeasure mPathMeasure;
     private float mCurAnimValue;
     private boolean mNext=false;
+    private int mCentX=100,mCentY=100;
+    private int mRadius=50;
 
     public PathAnimationViewForPayment(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -61,10 +63,10 @@ public class PathAnimationViewForPayment extends View {
         mPaint.setStrokeWidth(mBorderStrokeWidth);
         mDstPath = new Path();
         mCirclePath = new Path();
-        mCirclePath.addCircle(100, 100, 50, Path.Direction.CW);
-        mCirclePath.moveTo(75,100);
-        mCirclePath.lineTo(100,125);
-        mCirclePath.lineTo(125,75);
+        mCirclePath.addCircle(mCentX, mCentY, mRadius, Path.Direction.CW);
+        mCirclePath.moveTo(mCentX-mRadius/2,mCentY);
+        mCirclePath.lineTo(mCentX,mCentY+mRadius/2);
+        mCirclePath.lineTo(mCentX+mRadius/2,mCentY-mRadius/2);
         mPathMeasure = new PathMeasure(mCirclePath, false);
 
         ValueAnimator animator = ValueAnimator.ofFloat(0, 2);

@@ -1,8 +1,5 @@
 package cn.huanxiu.demosforanimation.animation;
 
-import android.view.View;
-import android.widget.Button;
-
 import cn.huanxiu.demosforanimation.R;
 import cn.huanxiu.demosforanimation.base.BaseActivity;
 
@@ -11,7 +8,8 @@ import cn.huanxiu.demosforanimation.base.BaseActivity;
  * 时间：2018/12/10
  * 功能：
  */
-public class TweenAnimationActivity extends BaseActivity implements View.OnClickListener{
+public class TweenAnimationActivity extends BaseActivity{
+
 
     @Override
     protected int getLayoutId() {
@@ -20,12 +18,5 @@ public class TweenAnimationActivity extends BaseActivity implements View.OnClick
 
     @Override
     protected void initView() {
-
-    }
-
-    @Override
-    public void onClick(View view) {
-        switch (view.getId()){
-        }
     }
 }
