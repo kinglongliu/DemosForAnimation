@@ -16,43 +16,104 @@
         android:textSize="16sp" />
 
     <LinearLayout
-        android:orientation="horizontal"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
         <Button
             android:id="@+id/btn1"
-            android:text="Move"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:text="自定义插值器" />
 
         <Button
             android:id="@+id/btn2"
-            android:text="Jump"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:text="弹跳动画" />
 
         <Button
             android:id="@+id/btn3"
-            android:text="ArgbEvaluator"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:text="颜色变化" />
     </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btn4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="字母变化" />
+
+        <Button
+            android:id="@+id/btn5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="抛物线" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="以上为ValueAnimator实例" />
+
+    </LinearLayout>
+
+    <View
+        android:background="@color/colorPrimary"
+        android:layout_width="match_parent"
+        android:layout_height="1dp" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btn6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="组合动画" />
+
+        <Button
+            android:id="@+id/btn7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="自定义Object" />
+    </LinearLayout>
+    <ImageView
+        android:id="@+id/img_ball"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_ball"
+        android:visibility="invisible" />
+
+    <cn.huanxiu.demosforanimation.animation.customview.FallingBallImageView
+        android:id="@+id/img_fall_ball"
+        android:src="@drawable/ic_ball"
+        android:visibility="invisible"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 
     <TextView
         android:id="@+id/tv"
-        android:text="自定义差值器"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
         android:background="@color/colorPrimary"
         android:padding="10dp"
-        android:visibility="gone"
-        android:layout_gravity="center_horizontal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:text="自定义差值器"
+        android:visibility="gone" />
 
     <cn.huanxiu.demosforanimation.animation.customview.LoadingImageView
         android:id="@+id/loading"
-        android:layout_gravity="center"
-        android:layout_marginTop="50dp"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="50dp" />
 
 </LinearLayout>
