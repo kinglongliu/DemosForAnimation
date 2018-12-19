@@ -3,6 +3,7 @@ package cn.huanxiu.demosforanimation.animation;
 import android.animation.AnimatorSet;
 import android.animation.ArgbEvaluator;
 import android.animation.ObjectAnimator;
+import android.animation.PropertyValuesHolder;
 import android.animation.ValueAnimator;
 import android.graphics.Point;
 import android.view.View;
@@ -13,6 +14,7 @@ import android.widget.TextView;
 import cn.huanxiu.demosforanimation.R;
 import cn.huanxiu.demosforanimation.animation.customview.FallingBallImageView;
 import cn.huanxiu.demosforanimation.animation.customview.LoadingImageView;
+import cn.huanxiu.demosforanimation.animation.customview.MyTextView;
 import cn.huanxiu.demosforanimation.base.BaseActivity;
 
 /**
@@ -24,12 +26,15 @@ public class PropertyAnimationActivity extends BaseActivity implements View.OnCl
 
     private LoadingImageView loadingImageView;
     private Button btn1,btn2,btn3,btn4,btn5,btn6,btn7;
-    private TextView textView;
+    private Button btnItem1,btnItem2,btnItem3,btnItem4,btnMenu,btnItem5;
+    private TextView textView,textView8;
     private ValueAnimator valueAnimator1,valueAnimator2,valueAnimator3,valueAnimator4,valueAnimator5;
-    private ObjectAnimator objectAnimator1,objectAnimator2;
+    private ObjectAnimator objectAnimator2,objectAnimator1,objectAnimator3;
     private AnimatorSet animatorSet;
     private ImageView imgBall;
     private FallingBallImageView fallingBallImageView;
+    private boolean isMenuOpen=false;
+    private MyTextView myTextView;
 
     @Override
     protected int getLayoutId() {
@@ -56,6 +61,22 @@ public class PropertyAnimationActivity extends BaseActivity implements View.OnCl
         fallingBallImageView=findViewById(R.id.img_fall_ball);
         btn7=findViewById(R.id.btn7);
         btn7.setOnClickListener(this);
+        btnItem1=findViewById(R.id.item1);
+        btnItem2=findViewById(R.id.item2);
+        btnItem3=findViewById(R.id.item3);
+        btnItem4=findViewById(R.id.item4);
+        btnMenu=findViewById(R.id.menu);
+        btnMenu.setOnClickListener(this);
+        btnItem1.setOnClickListener(this);
+        btnItem2.setOnClickListener(this);
+        btnItem3.setOnClickListener(this);
+        btnItem4.setOnClickListener(this);
+        btnItem5=findViewById(R.id.item5);
+        btnItem5.setOnClickListener(this);
+        textView8=findViewById(R.id.btn8);
+        textView8.setOnClickListener(this);
+        myTextView=findViewById(R.id.myTextView);
+        myTextView.setOnClickListener(this);
     }
 
     private ValueAnimator doAnimation(){
@@ -140,6 +161,72 @@ public class PropertyAnimationActivity extends BaseActivity implements View.OnCl
         return objectAnimator;
     }
 
+    private void doOpenMenu(View view,int index,int total,int radius){
+        if(view.getVisibility()!=View.VISIBLE){
+            view.setVisibility(View.VISIBLE);
+        }
+
+        double degress=Math.toRadians(90)/(total-1)*index;
+        int translationX=-(int)(radius*Math.sin(degress));
+        int translationY=-(int)(radius*Math.cos(degress));
+        AnimatorSet set=new AnimatorSet();
+        set.playTogether(ObjectAnimator.ofFloat(view,"translationX",0,translationX)
+        ,ObjectAnimator.ofFloat(view,"translationY",0,translationY),
+                ObjectAnimator.ofFloat(view,"scaleX",0f,1f),
+                ObjectAnimator.ofFloat(view,"scaleY",0f,1f),
+                ObjectAnimator.ofFloat(view,"alpha",0f,1f));
+        set.setDuration(500).start();
+    }
+
+    private void doCloseMenu(View view,int index,int total,int radius){
+        if(view.getVisibility()!=View.VISIBLE){
+            view.setVisibility(View.VISIBLE);
+        }
+
+        double degress=Math.toRadians(90)/(total-1)*index;
+        int translationX=-(int)(radius*Math.sin(degress));
+        int translationY=-(int)(radius*Math.cos(degress));
+        AnimatorSet set=new AnimatorSet();
+        set.playTogether(ObjectAnimator.ofFloat(view,"translationX",translationX,0)
+                ,ObjectAnimator.ofFloat(view,"translationY",translationY,0),
+                ObjectAnimator.ofFloat(view,"scaleX",1f,0.1f),
+                ObjectAnimator.ofFloat(view,"scaleY",1f,0.1f),
+                ObjectAnimator.ofFloat(view,"alpha",1f,0f));
+        set.setDuration(500).start();
+    }
+
+    private void openMenu(){
+        doOpenMenu(btnItem1,0,5,300);
+        doOpenMenu(btnItem2,1,5,300);
+        doOpenMenu(btnItem3,2,5,300);
+        doOpenMenu(btnItem4,3,5,300);
+        doOpenMenu(btnItem5,4,5,300);
+    }
+
+    private void closeMenu(){
+        doCloseMenu(btnItem1,0,5,300);
+        doCloseMenu(btnItem2,1,5,300);
+        doCloseMenu(btnItem3,2,5,300);
+        doCloseMenu(btnItem4,3,5,300);
+        doCloseMenu(btnItem5,4,5,300);
+    }
+
+    private ObjectAnimator valuesHolderAnimator(){
+        PropertyValuesHolder rotationHolder=PropertyValuesHolder.ofFloat("Rotation",60f,-60f,40f,-40f,-20f,20f,10f,-10f,0f);
+        PropertyValuesHolder alphaHolder=PropertyValuesHolder.ofFloat("alpha",0.1f,1f,0.1f,1f);
+        ObjectAnimator animator=ObjectAnimator.ofPropertyValuesHolder(textView8,rotationHolder,alphaHolder);
+        animator.setDuration(3000);
+        animator.start();
+        return  animator;
+    }
+
+    private ObjectAnimator valuesHolderCharactorAnimator(){
+        PropertyValuesHolder charHolder=PropertyValuesHolder.ofObject("CharText",new CharEvaluator(),new Character('A'),new Character('Z'));
+        ObjectAnimator animator=ObjectAnimator.ofPropertyValuesHolder(myTextView,charHolder);
+        animator.setDuration(3000);
+        animator.start();
+        return  animator;
+    }
 
     @Override
     public void onClick(View view) {
@@ -206,6 +293,31 @@ public class PropertyAnimationActivity extends BaseActivity implements View.OnCl
                     fallingBallImageView.setVisibility(View.INVISIBLE);
                     objectAnimator2.cancel();
                     objectAnimator2=null;
+                }
+                break;
+            case R.id.menu:
+                if(!isMenuOpen){
+                    isMenuOpen=true;
+                    openMenu();
+                } else {
+                    isMenuOpen=false;
+                    closeMenu();
+                }
+                break;
+            case R.id.btn8:
+                if(objectAnimator1==null){
+                    objectAnimator1=valuesHolderAnimator();
+                } else {
+                    objectAnimator1.cancel();
+                    objectAnimator1=null;
+                }
+                break;
+            case R.id.myTextView:
+                if(objectAnimator3==null){
+                    objectAnimator3=valuesHolderCharactorAnimator();
+                } else {
+                    objectAnimator3.cancel();
+                    objectAnimator3=null;
                 }
                 break;
         }

@@ -8,4 +8,18 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="MenuStyle">
+        <!-- Customize your theme here. -->
+        <item name="android:layout_width">50dp</item>
+        <item name="android:layout_height">50dp</item>
+        <item name="android:layout_gravity">right|bottom</item>
+    </style>
+
+    <style name="MenuItemStyle">
+        <!-- Customize your theme here. -->
+        <item name="android:layout_width">45dp</item>
+        <item name="android:layout_height">45dp</item>
+        <item name="android:layout_gravity">right|bottom</item>
+    </style>
+
 </resources>
