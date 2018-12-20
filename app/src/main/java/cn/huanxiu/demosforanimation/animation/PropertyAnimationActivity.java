@@ -3,14 +3,17 @@ package cn.huanxiu.demosforanimation.animation;
 import android.animation.AnimatorSet;
 import android.animation.ArgbEvaluator;
 import android.animation.Keyframe;
+import android.animation.LayoutTransition;
 import android.animation.ObjectAnimator;
 import android.animation.PropertyValuesHolder;
 import android.animation.ValueAnimator;
 import android.graphics.Point;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.animation.BounceInterpolator;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import cn.huanxiu.demosforanimation.R;
@@ -29,7 +32,7 @@ public class PropertyAnimationActivity extends BaseActivity implements View.OnCl
     private LoadingImageView loadingImageView;
     private Button btn1,btn2,btn3,btn4,btn5,btn6,btn7;
     private Button btnItem1,btnItem2,btnItem3,btnItem4,btnMenu,btnItem5;
-    private TextView textView,textView8;
+    private TextView textView,textView8,tvPro,tvGroup,tvDelete;
     private ValueAnimator valueAnimator1,valueAnimator2,valueAnimator3,valueAnimator4,valueAnimator5;
     private ObjectAnimator objectAnimator2,objectAnimator1,objectAnimator3,objectAnimator4;
     private AnimatorSet animatorSet;
@@ -37,6 +40,7 @@ public class PropertyAnimationActivity extends BaseActivity implements View.OnCl
     private FallingBallImageView fallingBallImageView;
     private boolean isMenuOpen=false;
     private MyTextView myTextView;
+    private LinearLayout llyGroup;
 
     @Override
     protected int getLayoutId() {
@@ -81,6 +85,14 @@ public class PropertyAnimationActivity extends BaseActivity implements View.OnCl
         myTextView.setOnClickListener(this);
         imgPhone=findViewById(R.id.img_phone);
         imgPhone.setOnClickListener(this);
+        tvPro=findViewById(R.id.tv_pro);
+        tvPro.setOnClickListener(this);
+        tvGroup=findViewById(R.id.viewGroup_ani);
+        tvGroup.setOnClickListener(this);
+        llyGroup=findViewById(R.id.lly_group);
+        tvDelete=findViewById(R.id.viewGroup_ani_delete);
+        tvDelete.setOnClickListener(this);
+        doLayoutAnimation();
     }
 
     private ValueAnimator doAnimation(){
@@ -268,6 +280,32 @@ public class PropertyAnimationActivity extends BaseActivity implements View.OnCl
         return objectAnimator;
     }
 
+    private void doLayoutAnimation(){
+        LayoutTransition transition=new LayoutTransition();
+        ObjectAnimator animatorIn=ObjectAnimator.ofFloat(null,"rotationY",0f,180f,0f);
+        transition.setAnimator(LayoutTransition.APPEARING,animatorIn);
+
+        ObjectAnimator animatorOut=ObjectAnimator.ofFloat(null,"rotaion",0f,90f,0f);
+        transition.setAnimator(LayoutTransition.DISAPPEARING,animatorOut);
+
+        llyGroup.setLayoutTransition(transition);
+
+    }
+
+    private void addButtonView(){
+        Button button=new Button(this);
+        button.setText("haha");
+        LinearLayout.LayoutParams params=new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,ViewGroup.LayoutParams.WRAP_CONTENT);
+        button.setLayoutParams(params);
+        llyGroup.addView(button,0);
+    }
+
+    private void deleteButtonView(){
+        if(llyGroup.getChildCount()>0){
+            llyGroup.removeViewAt(0);
+        }
+    }
+
     @Override
     public void onClick(View view) {
         switch (view.getId()){
@@ -367,6 +405,15 @@ public class PropertyAnimationActivity extends BaseActivity implements View.OnCl
                     objectAnimator4.cancel();
                     objectAnimator4=null;
                 }
+                break;
+            case R.id.tv_pro:
+                tvPro.animate().alpha(0.5f).translationX(100).scaleX(1.5f);
+                break;
+            case R.id.viewGroup_ani:
+                addButtonView();
+                break;
+            case R.id.viewGroup_ani_delete:
+                deleteButtonView();
                 break;
         }
     }

@@ -128,6 +128,46 @@
         android:layout_height="1dp"
         android:background="@color/colorPrimary" />
 
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/tv_pro"
+            android:padding="10dp"
+            android:text="ViewPropertyAnimator"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/viewGroup_ani"
+            android:padding="10dp"
+            android:text="LayoutTransition--add"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/viewGroup_ani_delete"
+            android:padding="10dp"
+            android:text="LayoutTransition--delete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/lly_group"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    </LinearLayout>
+
     <ImageView
         android:id="@+id/img_ball"
         android:layout_width="wrap_content"
@@ -198,6 +238,5 @@
             android:background="@drawable/ic_item5"
             android:id="@+id/item5"
             style="@style/MenuItemStyle" />
-
     </FrameLayout>
 </LinearLayout>
