@@ -2,11 +2,13 @@ package cn.huanxiu.demosforanimation.animation;
 
 import android.animation.AnimatorSet;
 import android.animation.ArgbEvaluator;
+import android.animation.Keyframe;
 import android.animation.ObjectAnimator;
 import android.animation.PropertyValuesHolder;
 import android.animation.ValueAnimator;
 import android.graphics.Point;
 import android.view.View;
+import android.view.animation.BounceInterpolator;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -29,9 +31,9 @@ public class PropertyAnimationActivity extends BaseActivity implements View.OnCl
     private Button btnItem1,btnItem2,btnItem3,btnItem4,btnMenu,btnItem5;
     private TextView textView,textView8;
     private ValueAnimator valueAnimator1,valueAnimator2,valueAnimator3,valueAnimator4,valueAnimator5;
-    private ObjectAnimator objectAnimator2,objectAnimator1,objectAnimator3;
+    private ObjectAnimator objectAnimator2,objectAnimator1,objectAnimator3,objectAnimator4;
     private AnimatorSet animatorSet;
-    private ImageView imgBall;
+    private ImageView imgBall,imgPhone;
     private FallingBallImageView fallingBallImageView;
     private boolean isMenuOpen=false;
     private MyTextView myTextView;
@@ -77,6 +79,8 @@ public class PropertyAnimationActivity extends BaseActivity implements View.OnCl
         textView8.setOnClickListener(this);
         myTextView=findViewById(R.id.myTextView);
         myTextView.setOnClickListener(this);
+        imgPhone=findViewById(R.id.img_phone);
+        imgPhone.setOnClickListener(this);
     }
 
     private ValueAnimator doAnimation(){
@@ -228,6 +232,42 @@ public class PropertyAnimationActivity extends BaseActivity implements View.OnCl
         return  animator;
     }
 
+    private ObjectAnimator doKeyFrameAnimation(){
+        Keyframe frame0=Keyframe.ofFloat(0f,0);
+        Keyframe frame1=Keyframe.ofFloat(0.1f,-20f);
+        Keyframe frame2=Keyframe.ofFloat(0.2f,20f);
+        Keyframe frame3=Keyframe.ofFloat(0.3f,-20f);
+        Keyframe frame4=Keyframe.ofFloat(0.4f,20f);
+        Keyframe frame5=Keyframe.ofFloat(0.5f,-20f);
+        Keyframe frame6=Keyframe.ofFloat(0.6f,20f);
+        Keyframe frame7=Keyframe.ofFloat(0.7f,-20f);
+        Keyframe frame8=Keyframe.ofFloat(0.8f,20f);
+        Keyframe frame9=Keyframe.ofFloat(0.9f,-20f);
+        Keyframe frame10=Keyframe.ofFloat(1f,0);
+        frame3.setInterpolator(new BounceInterpolator());
+        PropertyValuesHolder frameHolder=PropertyValuesHolder.ofKeyframe("rotation",
+                frame0,frame1,frame2,frame3,frame4,frame5,frame6,frame7,frame8,frame9,frame10);
+
+        Keyframe scaleXframe0=Keyframe.ofFloat(0f,1);
+        Keyframe scaleXframe1=Keyframe.ofFloat(0.1f,1.1f);
+        Keyframe scaleXframe2=Keyframe.ofFloat(0.9f,1.1f);
+        Keyframe scaleXframe3=Keyframe.ofFloat(0f,1);
+        PropertyValuesHolder frameHolderScaleX=PropertyValuesHolder.ofKeyframe("ScaleX",
+                scaleXframe0,scaleXframe1,scaleXframe2,scaleXframe3);
+
+        Keyframe scaleYframe0=Keyframe.ofFloat(0f,1);
+        Keyframe scaleYframe1=Keyframe.ofFloat(0.1f,1.1f);
+        Keyframe scaleYframe2=Keyframe.ofFloat(0.9f,1.1f);
+        Keyframe scaleYframe3=Keyframe.ofFloat(0f,1);
+        PropertyValuesHolder frameHolderScaleY=PropertyValuesHolder.ofKeyframe("ScaleY",
+                scaleYframe0,scaleYframe1,scaleYframe2,scaleYframe3);
+
+        ObjectAnimator objectAnimator=ObjectAnimator.ofPropertyValuesHolder(imgPhone,frameHolder,frameHolderScaleX,frameHolderScaleY);
+        objectAnimator.setDuration(1000);
+        objectAnimator.start();
+        return objectAnimator;
+    }
+
     @Override
     public void onClick(View view) {
         switch (view.getId()){
@@ -318,6 +358,14 @@ public class PropertyAnimationActivity extends BaseActivity implements View.OnCl
                 } else {
                     objectAnimator3.cancel();
                     objectAnimator3=null;
+                }
+                break;
+            case R.id.img_phone:
+                if(objectAnimator4==null){
+                    objectAnimator4=doKeyFrameAnimation();
+                } else {
+                    objectAnimator4.cancel();
+                    objectAnimator4=null;
                 }
                 break;
         }
