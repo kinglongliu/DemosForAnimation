@@ -171,7 +171,7 @@ public class PropertyAnimationActivity extends BaseActivity implements View.OnCl
 
     private ObjectAnimator doMyObjectAnimator(){
         ObjectAnimator objectAnimator=ObjectAnimator.ofObject(fallingBallImageView,
-                "fallingPos",new FallingBallEvaluator(),new Point(0,fallingBallImageView.getTop()),new Point(500,800));
+                "fallingPos",new FallingBallEvaluator(),new Point(0,fallingBallImageView.getTop()),new Point(500,900));
         objectAnimator.setDuration(3000);
         objectAnimator.start();
         return objectAnimator;
