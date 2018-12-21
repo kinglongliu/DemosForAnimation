@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/likewx"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:background="@color/colorPrimary"
+        android:gravity="center"
+        android:text="绘图动画"
+        android:textColor="@color/white"
+        android:textSize="16sp" />
+
+    <cn.huanxiu.demosforanimation.animation.customview.TestPaintView
+        android:layout_width="match_parent"
+        android:layout_height="100dp" />
+
+    <cn.huanxiu.demosforanimation.animation.customview.NormalGestureTrackView
+        android:layout_width="match_parent"
+        android:layout_height="100dp" />
+</LinearLayout>

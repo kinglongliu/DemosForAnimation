@@ -12,7 +12,7 @@ import cn.huanxiu.demosforanimation.base.BaseActivity;
  */
 public class AnimationActivity extends BaseActivity implements View.OnClickListener{
 
-    private Button btnBujian,btnZhuzhen,btnShuxing,btnPath;
+    private Button btnBujian,btnZhuzhen,btnShuxing,btnPath,btnPaint;
 
     @Override
     protected int getLayoutId() {
@@ -29,6 +29,8 @@ public class AnimationActivity extends BaseActivity implements View.OnClickListe
         btnShuxing.setOnClickListener(this);
         btnPath=findViewById(R.id.btn_path);
         btnPath.setOnClickListener(this);
+        btnPaint=findViewById(R.id.btn_paint);
+        btnPaint.setOnClickListener(this);
     }
 
 
@@ -46,6 +48,9 @@ public class AnimationActivity extends BaseActivity implements View.OnClickListe
                 break;
             case R.id.btn_path:
                 startActivity(PathAnimationActivity.class);
+                break;
+            case R.id.btn_paint:
+                startActivity(PaintAnimationActivity.class);
                 break;
         }
     }
