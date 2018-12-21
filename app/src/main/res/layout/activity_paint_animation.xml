@@ -22,4 +22,8 @@
     <cn.huanxiu.demosforanimation.animation.customview.NormalGestureTrackView
         android:layout_width="match_parent"
         android:layout_height="100dp" />
+
+    <cn.huanxiu.demosforanimation.animation.customview.AnimWaveView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 </LinearLayout>
