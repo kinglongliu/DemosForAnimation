@@ -4,6 +4,7 @@ import android.view.View;
 import android.widget.Button;
 import cn.huanxiu.demosforanimation.R;
 import cn.huanxiu.demosforanimation.base.BaseActivity;
+import cn.huanxiu.demosforanimation.shadow.ShadowActivity;
 
 /**
  * 作者：liujinlong
