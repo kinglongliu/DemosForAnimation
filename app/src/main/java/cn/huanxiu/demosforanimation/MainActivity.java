@@ -6,10 +6,11 @@ import android.widget.LinearLayout;
 import cn.huanxiu.demosforanimation.animation.AnimationActivity;
 import cn.huanxiu.demosforanimation.base.BaseActivity;
 import cn.huanxiu.demosforanimation.shadow.ShadowActivity;
+import cn.huanxiu.demosforanimation.widget.WidgetActivity;
 
 public class MainActivity extends BaseActivity implements View.OnClickListener{
 
-    private Button btnAnimation,btnShadow;
+    private Button btnAnimation,btnShadow,btnWidget;
 
     @Override
     protected int getLayoutId() {
@@ -22,6 +23,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
         btnAnimation.setOnClickListener(this);
         btnShadow=findViewById(R.id.btn_shadow);
         btnShadow.setOnClickListener(this);
+        btnWidget=findViewById(R.id.btn_widegt);
+        btnWidget.setOnClickListener(this);
     }
 
     @Override
@@ -32,6 +35,9 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
                 break;
             case R.id.btn_shadow:
                 startActivity(ShadowActivity.class);
+                break;
+            case R.id.btn_widegt:
+                startActivity(WidgetActivity.class);
                 break;
         }
     }
