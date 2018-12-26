@@ -1,26 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
-<cn.huanxiu.demosforanimation.widget.MyLinLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="#ff00ff"
+    android:layout_height="match_parent"
     android:fitsSystemWindows="true">
 
-    <TextView
-        android:text="第一个View"
-        android:background="#ff0000"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+    <cn.huanxiu.demosforanimation.widget.FlowLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:background="@drawable/flag_03"
+            style="@style/text_flag_01"
+            android:text="第一个View" />
 
-    <TextView
-        android:text="第二个View"
-        android:background="#00ff00"
-        android:layout_width="wrap_content"
-        android:layout_height="50dp" />
+        <TextView
+            android:background="@drawable/flag_03"
+            style="@style/text_flag_01"
+            android:text="第二个View" />
 
-    <TextView
-        android:text="第三个View"
-        android:background="#0000ff"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        <TextView
+            style="@style/text_flag_01"
+            android:background="@drawable/flag_03"
+            android:text="第三个kdkdkdkal" />
 
-</cn.huanxiu.demosforanimation.widget.MyLinLayout>
+    </cn.huanxiu.demosforanimation.widget.FlowLayout>
+</LinearLayout>

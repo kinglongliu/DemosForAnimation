@@ -17,4 +17,5 @@ public class WidgetActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_widget);
     }
+
 }
