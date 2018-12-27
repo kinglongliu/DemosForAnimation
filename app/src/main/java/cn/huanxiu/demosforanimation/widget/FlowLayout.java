@@ -105,7 +105,6 @@ public class FlowLayout extends ViewGroup {
             //将left置为下一子控件的起始点
             left+=childWidth;
         }
-
     }
 
     @Override
