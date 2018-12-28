@@ -1,5 +1,6 @@
 package cn.huanxiu.demosforanimation.widget;
 
+import android.animation.ValueAnimator;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -12,10 +13,24 @@ import cn.huanxiu.demosforanimation.R;
  */
 public class WidgetActivity extends AppCompatActivity {
 
+    private ProgressBarTwo progressBar;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_widget);
+        progressBar=findViewById(R.id.progress);
+        ValueAnimator valueAnimator=ValueAnimator.ofFloat(0,1);
+        valueAnimator.setDuration(5000);
+//        valueAnimator.setRepeatCount(ValueAnimator.INFINITE);
+        valueAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+            @Override
+            public void onAnimationUpdate(ValueAnimator animation) {
+                float progerss=(float)animation.getAnimatedValue();
+                progressBar.setProgerss(progerss);
+            }
+        });
+        valueAnimator.start();
     }
 
 }
