@@ -1,7 +1,9 @@
 package cn.huanxiu.demosforanimation.widget;
 
 import android.content.Context;
+import android.content.res.TypedArray;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.RectF;
 import android.util.AttributeSet;
@@ -17,26 +19,50 @@ import cn.huanxiu.demosforanimation.R;
 public class ProgressBarTwo extends View{
 
     private Paint mPaint;
-    private int mPaintForColor;
-    private float mBorderStrokeWidth = 5,textWidth;
+    private int mLineColor;
+    private int mTextColor;
+    private float mLineWidth;
+    private float mTextLineWidth;
+    private float textWidth;
     private int measureWidth;
     private float progressWidth;
     private float progress;
     private int baseLineY=50;
+    private float mTextSize;
+
+    private final int default_text_color = Color.rgb(66, 145, 241);
+    private final int default_line_color = Color.rgb(66, 145, 241);
+    private final int default_line_width=5;
+    private final int default_text_lint_width=1;
+    private final int default_text_size=30;
+
+    public ProgressBarTwo(Context context) {
+        this(context, null);
+    }
 
     public ProgressBarTwo(Context context, AttributeSet attrs){
-        super(context,attrs);
+        this(context,attrs,0);
+    }
+
+    public ProgressBarTwo(Context context,AttributeSet attrs,int defStyleAttr){
+        super(context,attrs,defStyleAttr);
+        final TypedArray attributes = context.getTheme().obtainStyledAttributes(attrs, R.styleable.ProgressBarTwo,
+                defStyleAttr, 0);
+        mTextColor=attributes.getColor(R.styleable.ProgressBarTwo_progress_text_color,default_text_color);
+        mLineColor=attributes.getColor(R.styleable.ProgressBarTwo_progress_reached_color,default_line_color);
+        mLineWidth=attributes.getDimension(R.styleable.ProgressBarTwo_progress_reached_bar_height,default_line_width);
+        mTextLineWidth=attributes.getDimension(R.styleable.ProgressBarTwo_progress_text_line_height,default_text_lint_width);
+        mTextSize=attributes.getDimension(R.styleable.ProgressBarTwo_progress_text_size,default_text_size);
         init();
     }
 
     private void init(){
         mPaint=new Paint();
         mPaint.setAntiAlias(true);
-        mPaintForColor= getResources().getColor(R.color.colorAccent);
         mPaint.setStyle(Paint.Style.STROKE);
 
-        mPaint.setStrokeWidth(1);
-        mPaint.setTextSize(30);
+        mPaint.setStrokeWidth(mTextLineWidth);
+        mPaint.setTextSize(mTextSize);
         textWidth=mPaint.measureText("100%");
     }
 
@@ -55,12 +81,13 @@ public class ProgressBarTwo extends View{
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-        mPaint.setStrokeWidth(mBorderStrokeWidth);
-        mPaint.setColor(mPaintForColor);
+        mPaint.setStrokeWidth(mLineWidth);
+        mPaint.setColor(mLineColor);
         canvas.drawLine(0,baseLineY,progressWidth,baseLineY,mPaint);
 
-        mPaint.setStrokeWidth(1);
-        mPaint.setTextSize(30);
+        mPaint.setStrokeWidth(mTextLineWidth);
+        mPaint.setTextSize(mTextSize);
+        mPaint.setColor(mTextColor);
         float textHeigth=getTextHeigth();
         canvas.drawText((int)(progress*100)+"%",progressWidth,baseLineY+textHeigth/4,mPaint);
     }

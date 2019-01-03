@@ -14,12 +14,15 @@ import cn.huanxiu.demosforanimation.R;
 public class WidgetActivity extends AppCompatActivity {
 
     private ProgressBarTwo progressBar;
+    private ProgressBar progressBarOne;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_widget);
         progressBar=findViewById(R.id.progress);
+        progressBarOne=findViewById(R.id.progess_one);
+
         ValueAnimator valueAnimator=ValueAnimator.ofFloat(0,1);
         valueAnimator.setDuration(5000);
 //        valueAnimator.setRepeatCount(ValueAnimator.INFINITE);
@@ -28,6 +31,7 @@ public class WidgetActivity extends AppCompatActivity {
             public void onAnimationUpdate(ValueAnimator animation) {
                 float progerss=(float)animation.getAnimatedValue();
                 progressBar.setProgerss(progerss);
+                progressBarOne.setProgerss(progerss);
             }
         });
         valueAnimator.start();
