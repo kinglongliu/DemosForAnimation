@@ -22,4 +22,10 @@
             <enum name="invisible" value="1"/>
         </attr>
     </declare-styleable>
+
+    <declare-styleable name="CircleImageView">
+        <attr name="circle_edge_color" format="color"/>
+        <attr name="circle_edge_width" format="dimension"/>
+        <attr name="circle_radius" format="dimension"/>
+    </declare-styleable>
 </resources>

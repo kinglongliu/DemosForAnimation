@@ -46,7 +46,7 @@ public class ProgressBarTwo extends View{
 
     public ProgressBarTwo(Context context,AttributeSet attrs,int defStyleAttr){
         super(context,attrs,defStyleAttr);
-        final TypedArray attributes = context.getTheme().obtainStyledAttributes(attrs, R.styleable.ProgressBarTwo,
+        TypedArray attributes = context.getTheme().obtainStyledAttributes(attrs, R.styleable.ProgressBarTwo,
                 defStyleAttr, 0);
         mTextColor=attributes.getColor(R.styleable.ProgressBarTwo_progress_text_color,default_text_color);
         mLineColor=attributes.getColor(R.styleable.ProgressBarTwo_progress_reached_color,default_line_color);

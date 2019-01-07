@@ -1,23 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/white"
-    android:orientation="vertical"
-    android:fitsSystemWindows="true">
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
 
     <cn.huanxiu.demosforanimation.widget.FlowLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+
         <TextView
-            android:background="@drawable/flag_03"
             style="@style/text_flag_01"
+            android:background="@drawable/flag_03"
             android:text="第一个View" />
 
         <TextView
-            android:background="@drawable/flag_03"
             style="@style/text_flag_01"
+            android:background="@drawable/flag_03"
             android:text="第二个View" />
 
         <TextView
@@ -28,16 +29,24 @@
 
     <cn.huanxiu.demosforanimation.widget.ProgressBar
         android:id="@+id/progess_one"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
         android:layout_width="match_parent"
-        android:layout_height="50dp" />
+        android:layout_height="50dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp" />
 
     <cn.huanxiu.demosforanimation.widget.ProgressBarTwo
         android:id="@+id/progress"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
-        android:layout_width="match_parent"
-        app:progress_text_color="@color/colorAccent"
-        android:layout_height="50dp" />
+        app:progress_text_color="@color/colorAccent" />
+
+    <cn.huanxiu.demosforanimation.widget.CircleImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        app:circle_edge_color="@color/colorAccent"
+        android:src="@mipmap/ic_launcher"
+        app:circle_edge_width="5dp"
+        app:circle_radius="40dp" />
 </LinearLayout>
