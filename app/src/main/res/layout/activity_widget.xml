@@ -48,4 +48,12 @@
         android:src="@mipmap/ic_launcher"
         app:circle_edge_width="5dp"
         app:circle_radius="40dp" />
+    
+    <cn.huanxiu.demosforanimation.widget.PhotoView
+        android:id="@+id/photo_view"
+        android:layout_width="match_parent"
+        android:layout_gravity="center_horizontal"
+        android:scaleType="matrix"
+        android:src="@mipmap/bg_splash"
+        android:layout_height="match_parent" />
 </LinearLayout>

@@ -1,8 +1,9 @@
 package cn.huanxiu.demosforanimation;
 
+import android.graphics.Matrix;
 import android.view.View;
 import android.widget.Button;
-import android.widget.LinearLayout;
+
 import cn.huanxiu.demosforanimation.animation.AnimationActivity;
 import cn.huanxiu.demosforanimation.base.BaseActivity;
 import cn.huanxiu.demosforanimation.shadow.ShadowActivity;
@@ -25,6 +26,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
         btnShadow.setOnClickListener(this);
         btnWidget=findViewById(R.id.btn_widegt);
         btnWidget.setOnClickListener(this);
+        Matrix matrix=new Matrix();
     }
 
     @Override
@@ -41,4 +43,5 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
                 break;
         }
     }
+
 }

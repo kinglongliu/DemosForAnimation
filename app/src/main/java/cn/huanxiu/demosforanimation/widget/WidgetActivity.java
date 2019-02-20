@@ -15,6 +15,7 @@ public class WidgetActivity extends AppCompatActivity {
 
     private ProgressBarTwo progressBar;
     private ProgressBar progressBarOne;
+    private PhotoView photoView;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -22,6 +23,7 @@ public class WidgetActivity extends AppCompatActivity {
         setContentView(R.layout.activity_widget);
         progressBar=findViewById(R.id.progress);
         progressBarOne=findViewById(R.id.progess_one);
+        photoView=findViewById(R.id.photo_view);
 
         ValueAnimator valueAnimator=ValueAnimator.ofFloat(0,1);
         valueAnimator.setDuration(5000);
